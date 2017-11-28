@@ -44,7 +44,7 @@ let expectedResults = [[0.0],
 //Condition for program termination
 if trainingPatterns.count == expectedResults.count && network.lastL == 1 && network.numberOfLayers >= 2 {
     for (trainingPattern, expectedResult) in zip(trainingPatterns, expectedResults) {
-        if trainingPattern.count == network.firstL && expectedResult.count == 1 {
+        if trainingPattern.count == network.firstLayerNeuronsCount && expectedResult.count == 1 {
         } else {
             print("Error")
             exit(0)

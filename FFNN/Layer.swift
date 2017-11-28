@@ -43,7 +43,7 @@ class Layer {
     //Backward propagation deltas calc
     func calculateDeltasForOutputLayer(expected: [Double]) {
         for n in 0..<neurons.count {
-            neurons[n].delta = neurons[n].derivativeActivationFunction( neurons[n].inputCache) * (expected[n] - layerOutputCache[n])
+            neurons[n].delta = neurons[n].derivativeActivationFunction(neurons[n].inputCache) * (expected[n] - layerOutputCache[n])
         }
     }
     
@@ -52,8 +52,8 @@ class Layer {
         for (index, neuron) in neurons.enumerated() {
             let nextWeights = nextLayer.neurons.map { $0.weights[index] }
             let nextDeltas = nextLayer.neurons.map { $0.delta }
-            let error = zip(nextWeights, nextDeltas).map(*).reduce(0, +)
-            neuron.delta = neuron.derivativeActivationFunction(neuron.inputCache) * error
+            let sumOfWeightsXDeltas = zip(nextWeights, nextDeltas).map(*).reduce(0, +)
+            neuron.delta = neuron.derivativeActivationFunction(neuron.inputCache) * sumOfWeightsXDeltas
         }
     }
 }

@@ -10,7 +10,7 @@ import Accelerate
 
 class Network {
     var layers: [Layer]
-    var firstL: Int
+    var firstLayerNeuronsCount: Int
     var lastL: Int
     var numberOfLayers: Int
     init(layerStructure:[Int],
@@ -18,7 +18,7 @@ class Network {
         derivativeActivationFunction: @escaping (Double) -> Double = derivativeSigmoidFunction,
         learningRate: Double) {
         layers = [Layer]()
-        self.firstL = layerStructure[0]
+        self.firstLayerNeuronsCount = layerStructure[0]
         self.numberOfLayers = layerStructure.count
         self.lastL = layerStructure.last!
         
