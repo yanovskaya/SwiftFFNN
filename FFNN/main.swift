@@ -9,12 +9,12 @@
 import Accelerate
 
 //Neuron activation function
-func sigmoidFunction(x: Double) -> Double {
+func sigmoidFunction(_ x: Double) -> Double {
     return 1.0 / (1.0 + exp(-x))
 }
 //For calc back propagation delta weights
-func derivativeSigmoidFunction(yourMom: Double) -> Double {
-    return sigmoidFunction(x: yourMom) * (1 - sigmoidFunction(x: yourMom))
+func derivativeSigmoidFunction(x: Double) -> Double {
+    return sigmoidFunction(x) * (1 - sigmoidFunction(x))
 }
 //Initial neuron weights
 func randomWeights(number: Int) -> [Double] {

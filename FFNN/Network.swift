@@ -66,13 +66,13 @@ class Network {
     func train(inputs:[[Double]], expecteds:[[Double]]) {
         for (position, input) in inputs.enumerated() {
             let expectedOutputs = expecteds[position]
+            backwardPropagationMethod(expected: expectedOutputs)
+            updateWeightsAfterLearn()
+            
             let currentOutputs = outputs(input: input)
             let diffrencesBetweenPredictionAndExpected = zip(currentOutputs, expectedOutputs).map{$0-$1}
             let meanSquaredError = sqrt(diffrencesBetweenPredictionAndExpected.map{$0*$0}.reduce(0,+))
             print("Training loss: \(meanSquaredError)")
-            
-            backwardPropagationMethod(expected: expectedOutputs)
-            updateWeightsAfterLearn()
         }
     }
     
